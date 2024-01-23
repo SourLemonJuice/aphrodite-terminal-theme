@@ -24,14 +24,17 @@ __aphrodite_update_prompt_data() {
 	__aphrodite_venv=''
 	[[ -n "$VIRTUAL_ENV" ]] && __aphrodite_venv=$(basename "$VIRTUAL_ENV")
 
-	__aphrodite_git=''
-	__aphrodite_git_color=$(tput setaf 10)  # clean
-	local git_branch=$(git --no-optional-locks branch --show-current 2> /dev/null)
-	if [[ -n "$git_branch" ]]; then
-		local git_status=$(git --no-optional-locks status --porcelain 2> /dev/null | tail -n 1)
-		[[ -n "$git_status" ]] && __aphrodite_git_color=$(tput setaf 11)  # dirty
-		__aphrodite_git="‹${git_branch}›"
-	fi
+	# I don't need git status output, i'm already using IDE or $(git status).
+	# If i want take some mistake, those prompt con't stopping me.
+	# 
+	# __aphrodite_git=''
+	# __aphrodite_git_color=$(tput setaf 10)  # clean
+	# local git_branch=$(git --no-optional-locks branch --show-current 2> /dev/null)
+	# if [[ -n "$git_branch" ]]; then
+	# 	local git_status=$(git --no-optional-locks status --porcelain 2> /dev/null | tail -n 1)
+	# 	[[ -n "$git_status" ]] && __aphrodite_git_color=$(tput setaf 11)  # dirty
+	# 	__aphrodite_git="‹${git_branch}›"
+	# fi
 
 	__aphrodite_prompt_symbol_color=$(tput sgr0)
 	[[ "$RETVAL" -ne 0 ]] && __aphrodite_prompt_symbol_color=$(tput setaf 1)
@@ -41,21 +44,27 @@ __aphrodite_update_prompt_data() {
 }
 
 
-if [[ -n "$git_branch" ]]; then
-	PROMPT_COMMAND="$PROMPT_COMMAND; __aphrodite_update_prompt_data"
-else
-	PROMPT_COMMAND="__aphrodite_update_prompt_data"
-fi
+# I don't know what those did, is anyone seted "git_branch" befor bashrc?
+# 
+# if [[ -n "$git_branch" ]]; then
+# 	PROMPT_COMMAND="$PROMPT_COMMAND; __aphrodite_update_prompt_data"
+# else
+# 	PROMPT_COMMAND="__aphrodite_update_prompt_data"
+# fi
 
+# emm,what? Are these relic? this var was added by me.
+# remove comments to enable the [time] print.
+# APHRODITE_THEME_SHOW_TIME='1'
 
 PS1=''
 PS1+='\[$(tput setaf 7)\]$(echo -ne $__aphrodite_venv)\[$(tput sgr0)\]'
 PS1+='\[$(tput setaf 6)\]\u'
 PS1+='\[$(tput setaf 8)\]@'
 PS1+='\[$(tput setaf 12)\]\h'
-PS1+='\[$(tput setaf 8)\]:'
+# Add a space after ':' for easy copying
+PS1+='\[$(tput setaf 8)\]: '
 PS1+='\[$(tput sgr0)\]\w '
-PS1+='\[$(echo -ne $__aphrodite_git_color)\]$(echo -ne $__aphrodite_git)\[$(tput sgr0)\] '
-PS1+='\[$(tput setaf 8)\]\[$([[ -n "$APHRODITE_THEME_SHOW_TIME" ]] && echo -n "[\t]")\]\[$(tput sgr0)\]'
+# PS1+='\[$(echo -ne $__aphrodite_git_color)\]$(echo -ne $__aphrodite_git)\[$(tput sgr0)\] '
+# PS1+='\[$(tput setaf 8)\]\[$([[ -n "$APHRODITE_THEME_SHOW_TIME" ]] && echo -n "[\t]")\]\[$(tput sgr0)\]'
 PS1+='\[$(tput sgr0)\]\n'
 PS1+='\[$(echo -ne $__aphrodite_prompt_symbol_color)\]\$\[$(tput sgr0)\] '

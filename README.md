@@ -1,4 +1,7 @@
-# Aphrodite Terminal Theme
+# Aphrodite Terminal Theme [fork simplified]
+
+> by lemon\
+> Removed the git status, and made a few minor tweaks
 
 A minimalistic terminal theme (prompt) that does not have any visual noise. Displays only the necessary information: virtual env, current user, hostname, working directory, and git branch if exists. Looks great both with dark and white terminals. Bash, fish and zsh are supported.
 
@@ -30,9 +33,10 @@ A minimalistic terminal theme (prompt) that does not have any visual noise. Disp
 1. Backup existing `fish_prompt.fish` file: \
    `cp ~/.config/fish/functions/fish_prompt.fish{,.bak}`
 2. Download prompt:
+
    ```sh
    wget https://raw.githubusercontent.com/win0err/aphrodite-terminal-theme/master/fish_prompt.fish \
-	    -O ~/.config/fish/functions/fish_prompt.fish
+      -O ~/.config/fish/functions/fish_prompt.fish
    ```
 
 > **Author's note:** It looks even cooler when: \
@@ -47,7 +51,6 @@ A minimalistic terminal theme (prompt) that does not have any visual noise. Disp
    `echo 'source ~/.bash/themes/aphrodite/aphrodite.theme.sh' >> ~/.bashrc`
 3. Load theme immediately in current session: \
    `source ~/.bash/themes/aphrodite/aphrodite.theme.sh`
-
 
 ---
 _Developed by [Sergei Kolesnikov](https://github.com/win0err)_
