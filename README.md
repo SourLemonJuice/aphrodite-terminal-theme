@@ -1,6 +1,7 @@
 # Aphrodite Terminal Theme [fork simplified]
 
 > by lemon\
+> Only changed bash theme\
 > Removed the git status, and made a few minor tweaks
 
 A minimalistic terminal theme (prompt) that does not have any visual noise. Displays only the necessary information: virtual env, current user, hostname, working directory, and git branch if exists. Looks great both with dark and white terminals. Bash, fish and zsh are supported.

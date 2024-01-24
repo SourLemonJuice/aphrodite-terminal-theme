@@ -51,6 +51,9 @@ __aphrodite_update_prompt_data() {
 # else
 # 	PROMPT_COMMAND="__aphrodite_update_prompt_data"
 # fi
+# 
+# But we still need PROMP_COMMAND, right? i forget this.
+PROMPT_COMMAND="__aphrodite_update_prompt_data"
 
 # emm,what? Are these relic? this var was added by me.
 # remove comments to enable the [time] print.
@@ -61,7 +64,7 @@ PS1+='\[$(tput setaf 7)\]$(echo -ne $__aphrodite_venv)\[$(tput sgr0)\]'
 PS1+='\[$(tput setaf 6)\]\u'
 PS1+='\[$(tput setaf 8)\]@'
 PS1+='\[$(tput setaf 12)\]\h'
-# Add a space after ':' for easy copying
+# Add a space after ':' for easy copying, i like double click.
 PS1+='\[$(tput setaf 8)\]: '
 PS1+='\[$(tput sgr0)\]\w '
 # PS1+='\[$(echo -ne $__aphrodite_git_color)\]$(echo -ne $__aphrodite_git)\[$(tput sgr0)\] '
