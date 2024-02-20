@@ -39,6 +39,9 @@ __aphrodite_update_prompt_data() {
 	__aphrodite_prompt_symbol_color=$(tput sgr0)
 	[[ "$RETVAL" -ne 0 ]] && __aphrodite_prompt_symbol_color=$(tput setaf 1)
 
+	__aphrodite_prompt_return_string=""
+	[[ "$RETVAL" -ne 0 ]] && __aphrodite_prompt_return_string="[${RETVAL}]"
+
 
 	return $RETVAL  # to preserve retcode
 }
@@ -64,10 +67,17 @@ PS1+='\[$(tput setaf 7)\]$(echo -ne $__aphrodite_venv)\[$(tput sgr0)\]'
 PS1+='\[$(tput setaf 6)\]\u'
 PS1+='\[$(tput setaf 8)\]@'
 PS1+='\[$(tput setaf 12)\]\h'
-# Add a space after ':' for easy copying, i like double click.
+# Add a space after ':' for easy copying, i love double click.
 PS1+='\[$(tput setaf 8)\]: '
 PS1+='\[$(tput sgr0)\]\w '
+
 # PS1+='\[$(echo -ne $__aphrodite_git_color)\]$(echo -ne $__aphrodite_git)\[$(tput sgr0)\] '
 # PS1+='\[$(tput setaf 8)\]\[$([[ -n "$APHRODITE_THEME_SHOW_TIME" ]] && echo -n "[\t]")\]\[$(tput sgr0)\]'
-PS1+='\[$(tput sgr0)\]\n'
-PS1+='\[$(echo -ne $__aphrodite_prompt_symbol_color)\]\$\[$(tput sgr0)\] '
+# PS1+='\[$(tput sgr0)\]'
+
+# set errors color
+PS1+='\[$(echo -ne $__aphrodite_prompt_symbol_color)\]'
+# display error code and line feed
+PS1+='\[$(echo -ne $__aphrodite_prompt_return_string)\]\n'
+# set to normal color
+PS1+='\$\[$(tput sgr0)\] '
