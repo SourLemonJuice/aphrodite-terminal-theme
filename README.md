@@ -2,7 +2,8 @@
 
 > These words are written by SourLemonJuice.\
 > Only changed **bash** theme.\
-> Half removed the git status, and made a few minor tweaks.
+> Half removed the git status, and made a few minor tweaks.\
+> Set `APHRODITE_THEME_SHOW_TIME` to something can enable time echo.
 
 A minimalistic terminal theme (prompt) that does not have any visual noise. Displays only the necessary information: virtual env, current user, hostname, working directory, and git branch if exists. Looks great both with dark and white terminals. Bash, fish and zsh are supported.
 

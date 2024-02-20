@@ -58,7 +58,7 @@ __aphrodite_update_prompt_data() {
 # But we still need PROMP_COMMAND, right? i forget this.
 PROMPT_COMMAND="__aphrodite_update_prompt_data"
 
-# emm,what? Are these relic? this var was added by me.
+# emm,what? Are these relic? this line added by me.
 # remove comments to enable the [time] print.
 # APHRODITE_THEME_SHOW_TIME='1'
 
@@ -71,11 +71,14 @@ PS1+='\[$(tput setaf 12)\]\h'
 PS1+='\[$(tput setaf 8)\]: '
 PS1+='\[$(tput sgr0)\]\w '
 
+# git state
 # PS1+='\[$(echo -ne $__aphrodite_git_color)\]$(echo -ne $__aphrodite_git)\[$(tput sgr0)\] '
-# PS1+='\[$(tput setaf 8)\]\[$([[ -n "$APHRODITE_THEME_SHOW_TIME" ]] && echo -n "[\t]")\]\[$(tput sgr0)\]'
 # PS1+='\[$(tput sgr0)\]'
 
-# set errors color
+# time
+PS1+='\[$(tput setaf 8)\]\[$([[ -n "$APHRODITE_THEME_SHOW_TIME" ]] && echo -n "[\t]")\]\[$(tput sgr0)\] '
+
+# error code
 PS1+='\[$(echo -ne $__aphrodite_prompt_symbol_color)\]'
 # display error code and line feed
 PS1+='\[$(echo -ne $__aphrodite_prompt_return_string)\]\n'
