@@ -22,7 +22,7 @@ __aphrodite_update_prompt_data() {
 	local RETVAL=$?
 
 	__aphrodite_venv=''
-	[[ -n "$VIRTUAL_ENV" ]] && __aphrodite_venv=$(basename "$VIRTUAL_ENV")
+	[[ -n "$VIRTUAL_ENV" ]] && __aphrodite_venv="aaaa<py: $(basename "$VIRTUAL_ENV")>"
 
 	# I don't need git status output, i'm already using IDE or $(git status).
 	# If i want take some mistake, those prompt con't stopping me.
