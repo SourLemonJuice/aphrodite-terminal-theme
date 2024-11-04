@@ -83,4 +83,4 @@ PS1+='\[$(echo -ne $__aphrodite_prompt_symbol_color)\]'
 # display error code and line feed
 PS1+='\[$(echo -ne $__aphrodite_prompt_return_string)\]\n'
 # set to normal color
-PS1+='\$\[$(tput sgr0)\] '
+PS1+='\[$(tput sgr0)\]\$ '
